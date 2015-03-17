@@ -1,9 +1,18 @@
+/*
+ * Authentication Applications
+ * 
+ * 
+ */
+
+// Express | Routing
 var express = require('express');
 var app     = express();
 
+// Passport | Authentication
 var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+// Body-Parser | Request Parameter Parsing
 var bodyParser = require('body-parser');
 var multer     = require('multer'); 
 
