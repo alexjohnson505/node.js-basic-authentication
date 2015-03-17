@@ -16,7 +16,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var bodyParser = require('body-parser');
 var multer     = require('multer'); 
 
+// Cookie Parser | 
 var cookieParser = require('cookie-parser');
+
+// Express Session | 
 var session      = require('express-session');
 
 app.use(cookieParser())
@@ -27,13 +30,11 @@ app.use(multer());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-passport.use(new LocalStrategy(
-function(username, password, done)
-{
-    if(username == 'admin' && password == 'alice')
-    {
+passport.use(new LocalStrategy(function(username, password, done){
+    if (username == 'admin' && password == 'alice'){
         var user = { firstName: 'Alice', lastName: 'Wonderland' };
         return done(null, user);
     }
@@ -78,3 +79,4 @@ app.post('/logout', function(req, res)
 });     
 
 app.listen(3000);
+console.log("App Running At: localhost:3000")
